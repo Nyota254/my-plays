@@ -1,0 +1,17 @@
+---
+# - name: Exercise #1
+#   hosts: localhost
+
+#   roles:
+#     - print
+
+#############################
+# Remote conrol
+#############################
+
+- name: "hello world webpage"
+  hosts: localhost
+
+  roles:
+    - prepare
+    - apache

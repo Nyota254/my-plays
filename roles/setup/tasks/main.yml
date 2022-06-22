@@ -1,0 +1,38 @@
+---
+- name: update apt packages
+  become: true
+  apt:
+    update_cache: yes
+
+- name: upgrade apt packages
+  become: true
+  apt:
+    name: "*"
+    state: latest
+
+- name: install dependancies nodejs and npm
+  become: true
+  apt:
+    pkg:
+    - nodejs
+    - npm
+
+- name: install pm2
+  become: true
+  npm:
+    name: pm2
+    global: yes
+
+- name: create ~/web directiory
+  become: true
+  shell:  mkdir ~/web
+
+- name: copy index test page from files/index.js to ~/web/index.js
+  become: true
+  copy:
+    src: index.js
+    dest: ~/web
+
+- name: start web server
+  become: true
+  shell: pm2 start ~/web/index.js -f

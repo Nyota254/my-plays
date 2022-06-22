@@ -1,0 +1,5 @@
+#My virtual environment
+ansibleenv/
+
+#My server private key
+cicd.pem
